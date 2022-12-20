@@ -1,0 +1,37 @@
+
+body {
+    height: 100vh;
+    background-color: lightblue;
+}
+
+
+.h1 {
+   text-align:center;
+}
+
+.h3 {
+    vertical-align: top;
+    margin-bottom: 30px;
+}
+
+.startBtn {
+    padding: 10px;
+    width: 100px;
+    background-color: darkcyan;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+    font-size: medium;
+
+    
+}
+
+.startBtn:hover {
+opacity: .5;
+}
+
+.hide {
+    display: none;
+}
