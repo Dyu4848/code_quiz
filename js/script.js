@@ -10,6 +10,11 @@ var showEl = document.getElementById('show');
 var optionsEl = document.getElementById('options');
 var displayEl = document.getElementsByClassName('display-page');
 var questionEl = document.getElementById('question');
+var initialInput = document.getElementById('js-initials');
+var submitBtn = document.getElementById('js-submitBtn');
+var scoreEl = document.getElementById('js-score')
+var scorePageEl = document.getElementById('score-page');
+var inputListEl = document.getElementById('input-list');
 var score = 0;
 var qIndex = 0;
 var questArr = [
@@ -111,12 +116,35 @@ function chooseAnswer(event) {
     }
 }
 
-// Point system
 
 // When timer = 0 or array questions are finished display score
 function gameEnd() {
     clearInterval(timerInterval);
-    
+    quizEndEl.classList.remove('hide');
+    quizEl.classList.add('hide');
+    scoreEl.innerText = 'Your final score is ' + secondsLeft;
 }
 // Tally scores at the end with initials and save to local storage
+
+
+submitBtn.addEventListener('click', function(){
+    var initials = initialInput.value;
+    var existingScores = JSON.parse(localStorage.getItem('highscores')) || [];
+    var scoreObject = {
+        initials:initials,
+        score:secondsLeft
+    }
+    existingScores.push(scoreObject);
+    localStorage.setItem('highscores', JSON.stringify(existingScores));
+    quizEndEl.classList.add('hide');
+    scorePageEl.classList.remove(['hide']);
+})
+
+// Shows high score page with a play again function
+
+
+
+
+
+
 
