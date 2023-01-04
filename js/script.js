@@ -15,6 +15,7 @@ var submitBtn = document.getElementById('js-submitBtn');
 var scoreEl = document.getElementById('js-score')
 var scorePageEl = document.getElementById('score-page');
 var inputListEl = document.getElementById('input-list');
+var restartBtn = document.getElementById('restart-btn');
 var score = 0;
 var qIndex = 0;
 var questArr = [
@@ -126,7 +127,6 @@ function gameEnd() {
 }
 // Tally scores at the end with initials and save to local storage
 
-
 submitBtn.addEventListener('click', function(){
     var initials = initialInput.value;
     var existingScores = JSON.parse(localStorage.getItem('highscores')) || [];
@@ -137,13 +137,32 @@ submitBtn.addEventListener('click', function(){
     existingScores.push(scoreObject);
     localStorage.setItem('highscores', JSON.stringify(existingScores));
     quizEndEl.classList.add('hide');
-    scorePageEl.classList.remove(['hide']);
-})
+    getLocalScoreStorage();
+    scorePageEl.classList.remove('hide');
+});
 
 // Shows high score page with a play again function
 
+function getLocalScoreStorage() {
+    let existingScores = JSON.parse(localStorage.getItem('highscores')) || [];
+    inputListEl.innerHTML = ''
+    for(let i = 0; i < existingScores.length; i++) {
+        const initials = existingScores[i].initials;
+        const score = existingScores[i].score;
+        const li = document.createElement('li');
+        li.textContent = initials + ': ' + score;
+        inputListEl.append(li);
+    }
+}
 
+restartBtn.addEventListener('click', restartQuiz);
 
+function restartQuiz() {
+scorePageEl.classList.add('hide');
+beginGame();
+secondsLeft = 76;
+startTimer();
+}
 
 
 
