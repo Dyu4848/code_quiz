@@ -20,7 +20,7 @@ var score = 0;
 var qIndex = 0;
 var questArr = [
     {
-        question: "What is an element?",
+        question: "",
         options: ['A pickle', 'Not a pickle', 'A dog', 'A cat'],
         answer: "A pickle"
     },
@@ -60,6 +60,7 @@ function beginGame() {
     console.log('started');
     timerInterval = setInterval(startTimer, 1000);
     timerEl.innerHTML = "Time Remaining: " + secondsLeft;
+    qIndex = 0;
     nextQuestion();
 }
 
@@ -159,9 +160,8 @@ restartBtn.addEventListener('click', restartQuiz);
 
 function restartQuiz() {
 scorePageEl.classList.add('hide');
-beginGame();
 secondsLeft = 76;
-startTimer();
+beginGame();
 }
 
 
