@@ -20,9 +20,9 @@ var score = 0;
 var qIndex = 0;
 var questArr = [
     {
-        question: "",
-        options: ['A pickle', 'Not a pickle', 'A dog', 'A cat'],
-        answer: "A pickle"
+        question: "What tag is used to link a javascript page to the webpage",
+        options: ['<a>', '<link>', '<script>', '<title>'],
+        answer: "<script>"
     },
     {
         question: "What is <h1>?",
