@@ -35,4 +35,4 @@ The following animation demonstrates the application functionality:
 
 # Deployed Link
 
-
+This is the deployed link: https://dyu4848.github.io/code_quiz/
